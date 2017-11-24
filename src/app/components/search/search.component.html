@@ -15,6 +15,6 @@
    <h4 class="text-center">Search Results</h4>
    <br/>
    <div class="row">
-      <weather *ngFor="let weather of all_weather; let i = index"></weather>
+      <weather *ngFor="let weather of all_weather; let i = index" (click)="showWeather(i)" [weather]="weather"></weather>
    </div>
 </div>

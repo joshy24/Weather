@@ -13,6 +13,8 @@ import { WeatherServiceService } from '../../services/weather-service.service'
 export class SearchComponent implements OnInit {
   keyword:string;
 
+  all_weather=[];
+
   constructor(private route: ActivatedRoute, private weatherService: WeatherServiceService, private location: Location) {
 
   }
@@ -24,7 +26,7 @@ export class SearchComponent implements OnInit {
   getWeather(){
      const word = this.route.snapshot.paramMap.get('keyword');
      this.keyword = word;
-     
+
      this.weatherService.getWeather(this.keyword).subscribe((weathers) => {
          console.log(weathers);
      });

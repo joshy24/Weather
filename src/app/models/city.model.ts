@@ -1,4 +1,4 @@
-export class Weather {
+export class City {
     title: string;
     location_type:string;
     woeid:number;

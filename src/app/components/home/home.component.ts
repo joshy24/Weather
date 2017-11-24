@@ -15,7 +15,12 @@ export class HomeComponent implements OnInit {
 
   cities:string[];
 
-  all_weather = [];
+  all_weather = [{
+    title: "London",
+    location_type: "city",
+    woeid: 44418,
+    latt_long: "51.506321,-0.12714"
+  }];
 
   ngOnInit() {
     this.weatherService.getWeather("london").subscribe((weathers) => {
@@ -31,7 +36,7 @@ export class HomeComponent implements OnInit {
   }
 
   showWeather(i){
-    console.log(i);
+    this.router.navigate(['/weather', this.all_weather[i].woeid]);
     return false;
   }
 
