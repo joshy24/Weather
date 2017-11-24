@@ -20,7 +20,6 @@ The home page should display the weather for today in these 6 cities:
 
 Istanbul, Berlin, London, Helsinki, Dublin, Vancouver
 
-
 The “weather” custom component:
 
 When displaying the weather, use a custom component called <weather></weather> and pass in necessary data using bindings. You are free to choose in what form you will pass data. You can also make additional data loading using component’s lifecycle hooks as well, but this is entirely optional. Reuse this custom component across the entire application.

@@ -12,12 +12,15 @@ export class HomeComponent implements OnInit {
 
   }
 
-  all_weather = {};
+  all_weather = [];
 
   ngOnInit() {
-      this.weatherService.getWeather("instanbul").subscribe((weather) => {
-          console.log(weather);
-      });
+
+  }
+
+  search(keyword){
+    console.log(keyword);
+    return false;
   }
 
 }
