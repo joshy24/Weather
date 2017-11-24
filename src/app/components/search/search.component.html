@@ -1,7 +1,6 @@
 <div class="container">
-   <br/>
    <form (submit)="search(search_word.value)">
-      <h4>Search Again</h4>
+      <h5>Search Again</h5>
       <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">S</span>
           <input type="text" class="form-control" placeholder="keyword" value="{{keyword}}" aria-describedby="basic-addon1" #search_word>
@@ -10,6 +9,8 @@
       <input type="submit" class="login_button" id="search_btn" (click)="search(search_word.value)">
    </form>
    <br/>
+   <h5 class="text-right"><a routerLink=""><i class="fa fa-home" aria-hidden="true"></i> Home</a></h5>
+
    <hr/>
    <h4 class="text-center">Search Results</h4>
    <br/>

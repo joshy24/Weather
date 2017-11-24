@@ -13,14 +13,20 @@ export class HomeComponent implements OnInit {
 
   }
 
+  cities:string[];
+
   all_weather = [];
 
   ngOnInit() {
-
+    this.weatherService.getWeather("london").subscribe((weathers) => {
+        console.log(weathers);
+    });
   }
 
   search(keyword){
-    this.router.navigate(['/search', keyword]);
+    if(keyword.length>0){
+      this.router.navigate(['/search', keyword]);
+    }
     return false;
   }
 

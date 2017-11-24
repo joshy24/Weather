@@ -12,8 +12,7 @@ export class WeatherServiceService {
 
   getWeather(keyword: string){
       return this.http.get("http://localhost/weather.php",  {
-        params: new HttpParams().set('keyword', keyword),
-        headers: new HttpHeaders().set('Method', 'search'),
+        params: new HttpParams().set('command', 'search').set('keyword', keyword);
       });
   }
 
