@@ -1,13 +1,13 @@
 <div class="container">
    <br/>
-   <form (submit)="search(keyword.value)">
-      <h4>Search</h4>
+   <form (submit)="search(search_word.value)">
+      <h4>Search Again</h4>
       <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">S</span>
-          <input type="text" class="form-control" placeholder="keyword" aria-describedby="basic-addon1" #keyword>
+          <input type="text" class="form-control" placeholder="keyword" value="{{keyword}}" aria-describedby="basic-addon1" #search_word>
       </div>
       <br/>
-      <input type="submit" class="login_button" id="search_btn" (click)="search(keyword.value)">
+      <input type="submit" class="login_button" id="search_btn" (click)="search(search_word.value)">
    </form>
    <br/>
    <hr/>
