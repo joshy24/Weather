@@ -1,1 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
+#search_btn{
+    background-color: #2E86C1;;
+    border: 0px;
+    color: #FFFFFF;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+
+#search_btn:hover{
+    background-color: #1B4F72;
+}

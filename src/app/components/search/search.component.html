@@ -1,3 +1,19 @@
-<p>
-  search works!
-</p>
+<div class="container">
+   <br/>
+   <form (submit)="search(keyword.value)">
+      <h4>Search</h4>
+      <div class="input-group">
+          <span class="input-group-addon" id="basic-addon1">S</span>
+          <input type="text" class="form-control" placeholder="keyword" aria-describedby="basic-addon1" #keyword>
+      </div>
+      <br/>
+      <input type="submit" class="login_button" id="search_btn" (click)="search(keyword.value)">
+   </form>
+   <br/>
+   <hr/>
+   <h4 class="text-center">Search Results</h4>
+   <br/>
+   <div class="row">
+      <weather *ngFor="let weather of all_weather; let i = index"></weather>
+   </div>
+</div>
