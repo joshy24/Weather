@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { WeatherServiceService } from '../../services/weather-service.service'
-
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-search',
@@ -11,16 +11,31 @@ import { WeatherServiceService } from '../../services/weather-service.service'
 })
 
 export class SearchComponent implements OnInit {
+  has_loaded:boolean;
+
   keyword:string;
 
-  all_weather=[];
+  search_weather=[];
 
-  constructor(private route: ActivatedRoute, private weatherService: WeatherServiceService, private location: Location) {
+  constructor(private route: ActivatedRoute, private weatherService: WeatherServiceService, private location: Location, private router:Router) {
 
   }
 
+  search(word){
+    if(word.length>0){
+      this.keyword = word;
+      this.router.navigate(['/search', word]);
+    }
+    return false;
+  }
+
   ngOnInit() {
+     this.has_loaded = false;
      this.getWeather();
+  }
+
+  ngAfterContentChecked(){
+      this.has_loaded = true;
   }
 
   getWeather(){

@@ -1,9 +1,10 @@
 <div class="container">
+   <br/>
    <form (submit)="search(search_word.value)">
       <h5>Search Again</h5>
       <div class="input-group">
           <span class="input-group-addon" id="basic-addon1">S</span>
-          <input type="text" class="form-control" placeholder="keyword" value="{{keyword}}" aria-describedby="basic-addon1" #search_word>
+          <input type="text" class="form-control" placeholder="keyword" aria-describedby="basic-addon1" #search_word>
       </div>
       <br/>
       <input type="submit" class="login_button" id="search_btn" (click)="search(search_word.value)">
@@ -12,9 +13,12 @@
    <h5 class="text-right"><a routerLink=""><i class="fa fa-home" aria-hidden="true"></i> Home</a></h5>
 
    <hr/>
-   <h4 class="text-center">Search Results</h4>
+   <h4 class="text-center">Search Results for '{{keyword}}'</h4>
    <br/>
-   <div class="row">
-      <weather *ngFor="let weather of all_weather; let i = index" (click)="showWeather(i)" [weather]="weather"></weather>
+   <div *ngIf="search_weather;else nocontent" class="row">
+      <weather *ngFor="let weather of search_weather; let i = index" (click)="showWeather(i)" [weather]="weather"></weather>
+   </div>
+   <div class="row" #nocontent >
+      <h4 *ngIf="has_loaded" class="text-center grey_text">No results were found. Try changing the keyword!</h4>
    </div>
 </div>

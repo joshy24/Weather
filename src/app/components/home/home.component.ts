@@ -1,31 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherServiceService } from '../../services/weather-service.service'
 import { Router } from '@angular/router';
+import 'rxjs/add/operator/map';
 
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
+
 export class HomeComponent implements OnInit {
 
   constructor(private weatherService:WeatherServiceService, private router:Router) {
 
   }
 
+  has_loaded:boolean;
+
   cities:string[];
 
-  all_weather = [{
-    title: "London",
-    location_type: "city",
-    woeid: 44418,
-    latt_long: "51.506321,-0.12714"
-  }];
+  all_weather:any[];
 
   ngOnInit() {
-    this.weatherService.getWeather("london").subscribe((weathers) => {
-        console.log(weathers);
-    });
+    this.has_loaded = false;
+    this.all_weather = [];
+    this.cities = ['Istanbul', 'Berlin', 'London', 'Helsinki', 'Dublin', 'Vancouver']';'
+
+    this.cities.map(city => {
+        this.weatherService.getWeather(city).subscribe((weathers) => {
+            //this.all_weather.push(weathers);
+        });
+    })
+  }
+
+  ngAfterContentInit(){
+      this.has_loaded = true;
   }
 
   search(keyword){
