@@ -15,10 +15,12 @@
    <hr/>
    <h4 class="text-center">Search Results for '{{keyword}}'</h4>
    <br/>
+   <div *ngIf="!has_loaded" class="loading"></div>
    <div *ngIf="search_weather;else nocontent" class="row">
       <weather *ngFor="let weather of search_weather; let i = index" (click)="showWeather(i)" [weather]="weather"></weather>
    </div>
    <div class="row" #nocontent >
       <h4 *ngIf="has_loaded" class="text-center grey_text">No results were found. Try changing the keyword!</h4>
    </div>
+
 </div>

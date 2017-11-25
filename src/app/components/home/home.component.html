@@ -13,6 +13,7 @@
    <hr/>
    <h4 class="text-center">Todays Weather</h4>
    <br/>
+   <div *ngIf="!has_loaded" class="loading"></div>
    <div class="row">
       <weather *ngFor="let weat of all_weather; let i = index" [weather]="weat" (click)="showWeather(i)"></weather>
    </div>

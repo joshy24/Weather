@@ -23,6 +23,7 @@ export class SearchComponent implements OnInit {
 
   search(word){
     if(word.length>0){
+      this.has_loaded = false;
       this.keyword = word;
       this.router.navigate(['/search', word]);
     }
@@ -30,11 +31,11 @@ export class SearchComponent implements OnInit {
   }
 
   ngOnInit() {
-     this.has_loaded = false;
+     setTimeout(this.has_loaded);
      this.getWeather();
   }
 
-  ngAfterContentChecked(){
+  ngAfterViewInit(){
       this.has_loaded = true;
   }
 

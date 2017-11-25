@@ -33,7 +33,7 @@ export class HomeComponent implements OnInit {
     })
   }
 
-  ngAfterContentInit(){
+  ngAfterViewInit(){
       this.has_loaded = true;
   }
 
