@@ -13,7 +13,7 @@ import { Weather } from '../../models/weather';
 })
 
 export class SearchComponent implements OnInit {
-  has_loaded:boolean;
+  has_loaded:boolean = false;
 
   keyword:string;
 
@@ -40,10 +40,6 @@ export class SearchComponent implements OnInit {
      this.getWeather();
   }
 
-  ngAfterViewInit(){
-      this.has_loaded = true;
-  }
-
   getWeather(){
      this.weatherService.getWeather(this.keyword).subscribe((weathers) => {
 
@@ -64,6 +60,8 @@ export class SearchComponent implements OnInit {
                weather.icon = "https://www.metaweather.com/static/img/weather/ico/" +todays_data.weather_state_abbr+".ico";
 
                this.all_weather.unshift(weather);
+
+               this.has_loaded = true;
            });
        }
      });

@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { ActivatedRoute } from '@angular/router';
 import { JsonparserService } from '../../services/jsonparser.service';
 import { Detail } from '../../models/detail';
+import { Location } from '@angular/common';
 import { TodayService } from '../../services/today.service';
 
 @Component({
@@ -12,12 +13,13 @@ import { TodayService } from '../../services/today.service';
   styleUrls: ['./weatherdetail.component.css']
 })
 export class WeatherdetailComponent implements OnInit {
+  has_loaded:boolean = false;
 
   all_weather:Detail[];
 
   title:string;
 
-  constructor(private weatherService:WeatherServiceService, private router:Router, private route: ActivatedRoute, private jsonParser:JsonparserService, private todayService:TodayService) { }
+  constructor(private weatherService:WeatherServiceService, private router:Router, private route: ActivatedRoute, private jsonParser:JsonparserService, private todayService:TodayService, private location: Location) { }
 
   ngOnInit() {
     this.title = "";
@@ -42,10 +44,16 @@ export class WeatherdetailComponent implements OnInit {
               detail.day = this.todayService.getDateWeekInWords(consolidated.applicable_date);
               detail.date = consolidated.applicable_date;
 
-              this.all_weather.unshift(detail);
+              this.all_weather.push(detail);
+
+              this.has_loaded = true;
          });
 
      });
+  }
+
+  back(){
+      this.location.back();
   }
 
 }

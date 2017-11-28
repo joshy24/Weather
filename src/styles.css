@@ -1,4 +1,27 @@
 /* You can add global styles to this file, and also import other style files */
+a{
+   color: black;
+}
+
+a:hover{
+   color: black;
+}
+
+.back-btn{
+   background-color: rgba(0,0,0,0);
+   border:0px;
+   color:#000000;
+}
+
+.top-most-div{
+   margin-bottom: 50px;
+}
+
+.back_btn:focus{
+   color:#000000;
+   text-decoration: underline;
+}
+
 #search_btn{
     background-color: #2E86C1;;
     border: 0px;

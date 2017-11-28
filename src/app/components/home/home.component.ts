@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 
   }
 
-  has_loaded:boolean;
+  has_loaded:boolean = false;
 
   cities:string[];
 
@@ -35,29 +35,29 @@ export class HomeComponent implements OnInit {
 
                 this.weatherService.getDetails(array[0].woeid).subscribe((weather_details) => {
 
-                   if(weather_details){
+                   if(weather_details!=undefined&&weather_details!=null&&weather_details!=""){
                        var todays_data = this.jsonParser.parseJsonConsolidatedToday(weather_details, array[0].woeid);
 
-                       var weather = new Weather();
+                       if(todays_data!=undefined&&todays_data!={}){
+                          var weather = new Weather();
 
-                       weather.title = array[0].title;
-                       weather.temp = todays_data.the_temp;
-                       weather.min_temp = todays_data.min_temp;
-                       weather.max_temp = todays_data.max_temp;
-                       weather.woeid = array[0].woeid;
-                       weather.icon = "https://www.metaweather.com/static/img/weather/ico/" +todays_data.weather_state_abbr+".ico";
+                          weather.title = array[0].title;
+                          weather.temp = todays_data.the_temp;
+                          weather.min_temp = todays_data.min_temp;
+                          weather.max_temp = todays_data.max_temp;
+                          weather.woeid = array[0].woeid;
+                          weather.icon = "https://www.metaweather.com/static/img/weather/ico/" +todays_data.weather_state_abbr+".ico";
 
-                       this.all_weather.unshift(weather);
+                          this.all_weather.unshift(weather);
+                       }
+
+                       this.has_loaded = true;
                    }
                 });
             }
 
         });
     });
-  }
-
-  ngAfterViewInit(){
-      this.has_loaded = true;
   }
 
   search(keyword){

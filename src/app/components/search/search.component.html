@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container top-most-div">
    <br/>
    <form (submit)="search(search_word.value)">
       <h5>Search Again</h5>
@@ -15,9 +15,12 @@
    <hr/>
    <h4 class="text-center">Search Results for '{{keyword}}'</h4>
    <br/>
-
+   
+   <div *ngIf="!has_loaded">
+      <div class="loading"></div>
+   </div>
    <div class="row">
-      <weather *ngFor="let weather of all_weather; let i = index" (click)="showWeather(i)" [weather]="weather"></weather>
+      <a href=""><weather *ngFor="let weather of all_weather; let i = index" (click)="showWeather(i)" [weather]="weather"></weather></a>
    </div>
    <!--<div class="row" #nocontent >
       <h4 *ngIf="has_loaded" class="text-center grey_text">No results were found. Try changing the keyword!</h4>

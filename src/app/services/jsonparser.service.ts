@@ -9,7 +9,8 @@ export class JsonparserService {
   }
 
   parseJson(values, key){
-       var first = values.split(key)[1];
+       var first = values.split('https://www.metaweather.com/api/location/search/?query='+key)[1];
+
        var second = JSON.parse(first);
 
        return second;
@@ -20,7 +21,7 @@ export class JsonparserService {
        var second = JSON.parse(first);
 
        var todays_data = this.todayService.getTodaysWeather(second.consolidated_weather);
-
+       
        return todays_data;
   }
 

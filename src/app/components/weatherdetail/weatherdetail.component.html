@@ -1,11 +1,13 @@
-<div class="container">
+<div class="container top-most-div">
    <br/>
-   <h5 class="text-right"><a routerLink=""><i class="fa fa-right-arrow" aria-hidden="true"></i> Back</a></h5>
+   <h5 class="text-right"><button class="back-btn" (click)="back()"><i class="fa fa-arrow-left" aria-hidden="true"></i> Back</button></h5>
 
    <hr/>
-   <h4 class="text-center">Location Details for '{{title}}'</h4>
+   <h4 class="text-center">Weather Details for '{{title}}'</h4>
    <br/>
-
+   <div *ngIf="!has_loaded">
+      <div class="loading"></div>
+   </div>
    <div class="row">
       <detail *ngFor="let weather of all_weather;" [detail]="weather"></detail>
    </div>
