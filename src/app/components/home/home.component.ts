@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { WeatherServiceService } from '../../services/weather-service.service'
+import { WeatherServiceService } from '../../services/weather-service.service';
+import { JsonparserService } from '../../services/jsonparser.service';
 import { Router } from '@angular/router';
 import 'rxjs/add/operator/map';
 
@@ -11,7 +12,7 @@ import 'rxjs/add/operator/map';
 
 export class HomeComponent implements OnInit {
 
-  constructor(private weatherService:WeatherServiceService, private router:Router) {
+  constructor(private weatherService:WeatherServiceService, private router:Router, private jsonParser:JsonparserService) {
 
   }
 
@@ -24,11 +25,20 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.has_loaded = false;
     this.all_weather = [];
-    this.cities = ['Istanbul', 'Berlin', 'London', 'Helsinki', 'Dublin', 'Vancouver'];
+    this.cities = ['istanbul', 'berlin', 'london', 'helsinki', 'dublin', 'vancouver'];
 
     this.cities.map(city => {
         this.weatherService.getWeather(city).subscribe((weathers) => {
-            //this.all_weather.push(weathers);
+            if(weathers){
+                var array = this.jsonParser.parseJson(weathers, city);
+
+                this.weatherService.getDetails(array[0].woeid).subscribe((weather_details) => {
+
+                   var todays_data = this.jsonParser.parseJsonConsolidatedToday(weather_details, array[0].woeid);
+
+                })
+            }
+
         });
     })
   }
@@ -48,5 +58,9 @@ export class HomeComponent implements OnInit {
     this.router.navigate(['/weather', this.all_weather[i].woeid]);
     return false;
   }
+
+}
+
+interface City{
 
 }

@@ -6,6 +6,9 @@ import { HomeComponent } from './components/home/home.component';
 import { SearchComponent } from './components/search/search.component';
 
 import { WeatherServiceService } from './services/weather-service.service';
+import { JsonparserService } from './services/jsonparser.service';
+import { TodayService } from './services/today.service';
+
 import { WeatherComponent } from './components/weather/weather.component';
 
 import {HttpClientModule} from '@angular/common/http';
@@ -25,7 +28,11 @@ import { WeatherdetailComponent } from './components/weatherdetail/weatherdetail
     HttpClientModule,
     AppRoutingModule
   ],
-  providers: [WeatherServiceService],
+  providers: [
+    WeatherServiceService,
+    JsonparserService,
+    TodayService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

@@ -12,12 +12,15 @@ export class WeatherServiceService {
 
   getWeather(keyword: string){
       return this.http.get("http://localhost/weather.php",  {
-        params: new HttpParams().set('command', 'search').set('keyword', keyword)
+        responseType: 'text',
+        params: new HttpParams().set('command', 'search').set('keyword', keyword),
+        headers: new HttpHeaders().set('Accept', "text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8")
       });
   }
 
   getDetails(woeid: string){
       return this.http.get("http://localhost/weather.php",  {
+        responseType: 'text',
         params: new HttpParams().set('command', 'location').set('woeid', woeid)
       });
   }
