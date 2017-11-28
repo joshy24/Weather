@@ -16,8 +16,8 @@
    <h4 class="text-center">Search Results for '{{keyword}}'</h4>
    <br/>
 
-   <div *ngIf="search_weather;else nocontent" class="row">
-      <weather *ngFor="let weather of all_weathers; let i = index" (click)="showWeather(i)" [weather]="weather"></weather>
+   <div class="row">
+      <weather *ngFor="let weather of all_weather; let i = index" (click)="showWeather(i)" [weather]="weather"></weather>
    </div>
    <!--<div class="row" #nocontent >
       <h4 *ngIf="has_loaded" class="text-center grey_text">No results were found. Try changing the keyword!</h4>

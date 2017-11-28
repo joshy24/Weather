@@ -19,21 +19,24 @@ export class SearchComponent implements OnInit {
 
   all_weather:Weather[];
 
-  constructor(private route: ActivatedRoute, private weatherService: WeatherServiceService, private location: Location, private router:Router, private jsonParser:JsonparserService, private weather:Weather) {
+  constructor(private route: ActivatedRoute, private weatherService: WeatherServiceService, private location: Location, private router:Router, private jsonParser:JsonparserService) {
 
   }
 
   search(word){
+    this.all_weather = [];
     if(word.length>0){
       this.has_loaded = false;
       this.keyword = word;
-      this.router.navigate(['/search', word]);
+      this.getWeather();
     }
     return false;
   }
 
   ngOnInit() {
-     setTimeout(this.has_loaded);
+     this.all_weather = [];
+     const word = this.route.snapshot.paramMap.get('keyword');
+     this.keyword = word;
      this.getWeather();
   }
 
@@ -42,15 +45,13 @@ export class SearchComponent implements OnInit {
   }
 
   getWeather(){
-     const word = this.route.snapshot.paramMap.get('keyword');
-     this.keyword = word;
-
      this.weatherService.getWeather(this.keyword).subscribe((weathers) => {
 
        if(weathers){
            var array = this.jsonParser.parseJson(weathers, this.keyword);
 
            this.weatherService.getDetails(array[0].woeid).subscribe((weather_details) => {
+
                var todays_data = this.jsonParser.parseJsonConsolidatedToday(weather_details, array[0].woeid);
 
                var weather = new Weather();
