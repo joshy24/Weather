@@ -8,6 +8,7 @@ import { SearchComponent } from './components/search/search.component';
 import { WeatherServiceService } from './services/weather-service.service';
 import { JsonparserService } from './services/jsonparser.service';
 import { TodayService } from './services/today.service';
+import { Weather } from './models/weather';
 
 import { WeatherComponent } from './components/weather/weather.component';
 
@@ -31,7 +32,8 @@ import { WeatherdetailComponent } from './components/weatherdetail/weatherdetail
   providers: [
     WeatherServiceService,
     JsonparserService,
-    TodayService
+    TodayService,
+    Weather
   ],
   bootstrap: [AppComponent]
 })

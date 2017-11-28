@@ -20,7 +20,7 @@ export class JsonparserService {
        var second = JSON.parse(first);
 
        var todays_data = this.todayService.getTodaysWeather(second.consolidated_weather);
-       console.log(todays_data);
+
        return todays_data;
   }
 

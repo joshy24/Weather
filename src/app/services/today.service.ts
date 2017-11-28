@@ -1,20 +1,26 @@
 import { Injectable } from '@angular/core';
 import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
 
 @Injectable()
 export class TodayService {
 
-  constructor() { }
+  today:Date;
+  string_date:string;
+
+  constructor() {
+     this.today = new Date();
+     this.string_date = this.today.getFullYear() +"-"+(this.today.getMonth()+1)+"-"+this.today.getDate();
+  }
   //2017-11-28
   getTodaysWeather(consolidated){
-      var today = new Date();
-      var string_date = today.getFullYear() +"-"+(today.getMonth()+1)+"-"+today.getDate();
-
-      return consolidated.forEach(data => {
-          if(data.applicable_date == string_date){
-              
-              return data;
+      var info = {};
+      consolidated.forEach(data => {
+          if(data.applicable_date == this.string_date){
+              info = data;
           }
-      })
+      });
+
+      return info;
   }
 }

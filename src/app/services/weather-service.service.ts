@@ -25,10 +25,4 @@ export class WeatherServiceService {
       });
   }
 
-  getMore(woeid: string){
-      return this.http.get("http://localhost/weather.php",  {
-        params: new HttpParams().set('command', 'location').set('woeid', woeid)
-      });
-  }
-
 }
