@@ -35,3 +35,25 @@
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
 }
+
+.weather-div{
+    padding: 20px;
+    background-color: #FFFFFF;
+    margin: 10px;
+}
+
+.shadow {
+  -moz-box-shadow:    0px 1px 2px 1px #ccc;
+  -webkit-box-shadow: 0px 1px 2px 1px #ccc;
+  box-shadow:         0px 1px 2px 1px #ccc;
+}
+
+.img-center{
+  display: block;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.grey_text{
+   color: #99A3A4;
+}

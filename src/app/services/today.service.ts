@@ -23,4 +23,13 @@ export class TodayService {
 
       return info;
   }
+
+  getDateWeekInWords(date_week){
+      var date = new Date(date_week);
+
+      var days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];
+      
+      return days[date.getDay()];
+  }
+
 }

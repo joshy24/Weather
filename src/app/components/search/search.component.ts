@@ -69,4 +69,9 @@ export class SearchComponent implements OnInit {
      });
   }
 
+  showWeather(i){
+    this.router.navigate(['/weather', this.all_weather[i].woeid]);
+    return false;
+  }
+
 }

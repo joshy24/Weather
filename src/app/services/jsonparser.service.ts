@@ -28,7 +28,7 @@ export class JsonparserService {
        var first = values.split('https://www.metaweather.com/api/location/'+woeid)[1];
        var second = JSON.parse(first);
 
-       return second.consolidated_weather;
+       return {title: second.title, consolidated_weather: second.consolidated_weather};
   }
 
 }

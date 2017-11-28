@@ -9,12 +9,14 @@ import { WeatherServiceService } from './services/weather-service.service';
 import { JsonparserService } from './services/jsonparser.service';
 import { TodayService } from './services/today.service';
 import { Weather } from './models/weather';
+import { Detail } from './models/detail';
 
 import { WeatherComponent } from './components/weather/weather.component';
 
 import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './/app-routing.module';
 import { WeatherdetailComponent } from './components/weatherdetail/weatherdetail.component';
+import { DetailComponent } from './components/detail/detail.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +24,8 @@ import { WeatherdetailComponent } from './components/weatherdetail/weatherdetail
     HomeComponent,
     SearchComponent,
     WeatherComponent,
-    WeatherdetailComponent
+    WeatherdetailComponent,
+    DetailComponent
   ],
   imports: [
     BrowserModule,
@@ -33,7 +36,8 @@ import { WeatherdetailComponent } from './components/weatherdetail/weatherdetail
     WeatherServiceService,
     JsonparserService,
     TodayService,
-    Weather
+    Weather,
+    Detail
   ],
   bootstrap: [AppComponent]
 })
