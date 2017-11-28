@@ -24,7 +24,7 @@ export class HomeComponent implements OnInit {
   ngOnInit() {
     this.has_loaded = false;
     this.all_weather = [];
-    this.cities = ['Istanbul', 'Berlin', 'London', 'Helsinki', 'Dublin', 'Vancouver']';'
+    this.cities = ['Istanbul', 'Berlin', 'London', 'Helsinki', 'Dublin', 'Vancouver'];
 
     this.cities.map(city => {
         this.weatherService.getWeather(city).subscribe((weathers) => {

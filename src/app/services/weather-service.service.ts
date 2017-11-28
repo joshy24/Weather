@@ -12,19 +12,19 @@ export class WeatherServiceService {
 
   getWeather(keyword: string){
       return this.http.get("http://localhost/weather.php",  {
-        params: new HttpParams().set('command', 'search').set('keyword', keyword);
+        params: new HttpParams().set('command', 'search').set('keyword', keyword)
       });
   }
 
-  getDetails(woeid: number){
+  getDetails(woeid: string){
       return this.http.get("http://localhost/weather.php",  {
-        params: new HttpParams().set('command', 'location').set('woeid', woeid);
+        params: new HttpParams().set('command', 'location').set('woeid', woeid)
       });
   }
 
-  getMore(woeid: number){
+  getMore(woeid: string){
       return this.http.get("http://localhost/weather.php",  {
-        params: new HttpParams().set('command', 'location').set('woeid', woeid);
+        params: new HttpParams().set('command', 'location').set('woeid', woeid)
       });
   }
 

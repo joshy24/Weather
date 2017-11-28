@@ -7,7 +7,6 @@ import { SearchComponent } from './components/search/search.component';
 
 import { WeatherServiceService } from './services/weather-service.service';
 import { WeatherComponent } from './components/weather/weather.component';
-import { WeatherComponent } from './models/city.model';
 
 import {HttpClientModule} from '@angular/common/http';
 import { AppRoutingModule } from './/app-routing.module';
